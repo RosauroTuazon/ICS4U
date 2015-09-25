@@ -78,26 +78,50 @@ public class ContestantInformation {
 		return Lastname;
 	}
 	
+	/**
+	 * 
+	 * @param streetname
+	 */
 	public void setStreetname(String streetname){
 		this.Streetname = streetname;
 	}
 	
+	/**
+	 * 
+	 * @return Streetname
+	 */
 	public String getStreetname(){
 		return Streetname;
 	}
 	
+	/**
+	 * 
+	 * @param streetnumber
+	 */
 	public void setStreetnumber(String streetnumber){
 		this.Streetnumber = streetnumber;
 	}
 	
+	/**
+	 * 
+	 * @return Streetnumber
+	 */
 	public String getStreetnumber(){
 		return Streetnumber;
 	}
 	
+	/**
+	 * 
+	 * @param city
+	 */
 	public void setCity(String city){
 		this.City = city;
 	}
 	
+	/**
+	 * 
+	 * @return City
+	 */
 	public String getCity(){
 		return City;
 	}
@@ -240,7 +264,11 @@ public class ContestantInformation {
 		this.Phonenumber = phonenumber;
 	}
 	
-	public String Phonenumber(){
+	/**
+	 * 
+	 * @return Phonenumber
+	 */
+	public String getPhonenumber(){
 		return Phonenumber;
 	}
 	/**
@@ -267,6 +295,14 @@ public class ContestantInformation {
 		{
 			throw new InvalidInputException("This is an invalid year.");
 	    }
+		else if (birthdate.charAt(3)!='-')
+		{
+			throw new InvalidInputException("This needs to be a '-'");
+		}
+		else if (birthdate.charAt(7)!='-')
+		{
+			throw new InvalidInputException("This needs to be a '-'");
+		}
 		else
 		{
 			
