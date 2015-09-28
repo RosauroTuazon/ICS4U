@@ -295,13 +295,13 @@ public class ContestantInformation {
 		{
 			throw new InvalidInputException("This is an invalid year.");
 	    }
-		else if (birthdate.charAt(3)!='-')
+		else if (birthdate.charAt(3)!='/')
 		{
-			throw new InvalidInputException("This needs to be a '-'");
+			throw new InvalidInputException("This needs to be a '/'");
 		}
-		else if (birthdate.charAt(7)!='-')
+		else if (birthdate.charAt(7)!='/')
 		{
-			throw new InvalidInputException("This needs to be a '-'");
+			throw new InvalidInputException("This needs to be a '/'");
 		}
 		else
 		{
@@ -317,7 +317,7 @@ public class ContestantInformation {
 	public String getBirthdate(){
 		return Birthdate;
 	}
-	
+
 	public String toString(){
 		return (firstname + " " + Lastname + " " + Streetnumber + " " + Streetname + " " + City + " " + province + " " + PostalCode + " " + Phonenumber + " " + Birthdate + " ");
 	}
