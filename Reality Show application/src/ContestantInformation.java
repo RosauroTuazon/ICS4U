@@ -21,6 +21,13 @@ public class ContestantInformation {
 	private String Birthdate;
 	
 	/**
+	 * default constructor
+	 */
+	public ContestantInformation(){
+		
+	}
+	
+	/**
 	 * 
 	 * @param Firstname
 	 * @param Lastname
