@@ -20,14 +20,14 @@ public class Label {
 	 * Gets the user's last and first name
 	 */
 	private void formatName() {
-		output = ci1.getLastname() + ", " + ci1.getFirstname() + "/n";
+		output = ci1.getLastname() + ", " + ci1.getFirstname() + "\n";
 	}
 	
 	/**
 	 * Gets the user's full address
 	 */
 	private void formatAddress() {
-		output = output + ci1.getStreetnumber() + " " + ci1.getStreetname() + "/n" + ci1.getCity() + ", " + ci1.getProvince() + "/n" + ci1.getPostalCode() + "/n";
+		output = output + ci1.getStreetnumber() + " " + ci1.getStreetname() + "\n" + ci1.getCity() + ", " + ci1.getProvince() + "\n" + ci1.getPostalCode() + "\n";
 	}
     /**
      * Gets the user's phone number

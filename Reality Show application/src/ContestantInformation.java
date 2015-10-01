@@ -165,7 +165,7 @@ public class ContestantInformation {
 		}
 		else if (!Character.isLetter(postalcode.charAt(0)))
 		{
-			throw new InvalidInputException("This needs to be a character, not digit.");
+			throw new InvalidInputException("'" + postalcode.charAt(0) + "' This needs to be a character, not digit.");
 		}
 		else if (!Character.isLetter(postalcode.charAt(2)))
 		{
@@ -284,11 +284,11 @@ public class ContestantInformation {
 	 * @throws InvalidInputException
 	 */
 	public void setBirthdate(String birthdate) throws InvalidInputException {
-		String dayS = birthdate.substring(0, 2);
+		String dayS = birthdate.substring(0, 1);
 		int day = Integer.parseInt(dayS);
-		String monthS = birthdate.substring(4, 6);
+		String monthS = birthdate.substring(3, 4);
 		int month = Integer.parseInt(monthS);
-		String yearS = birthdate.substring(8, 11);
+		String yearS = birthdate.substring(6, 9);
 		int year = Integer.parseInt(yearS);
 		if (day > 31)
 		{
@@ -302,11 +302,11 @@ public class ContestantInformation {
 		{
 			throw new InvalidInputException("This is an invalid year.");
 	    }
-		else if (birthdate.charAt(3)!='/')
+		else if (birthdate.charAt(2)!='/')
 		{
 			throw new InvalidInputException("This needs to be a '/'");
 		}
-		else if (birthdate.charAt(7)!='/')
+		else if (birthdate.charAt(5)!='/')
 		{
 			throw new InvalidInputException("This needs to be a '/'");
 		}
