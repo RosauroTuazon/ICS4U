@@ -1,6 +1,7 @@
 /**
+ * This displays the information that the user has inputed.
  * @author Rosauro Tuazon
- *
+ * 
  */
 public class Label {
 	private ContestantInformation ci1;

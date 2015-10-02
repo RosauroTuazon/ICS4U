@@ -4,9 +4,7 @@
  * Description: For this program the user will be applying for a reality show.
  * They will need to answer a skill testing question correctly, and be at least 
  * 18 years of age. If they qualify you will get their address and phone number 
- * from them to send to the casting director. If they answer the skill testing
- * question wrong, or are too young, print an error message or tell them how many 
- * years they need to wait before they can apply again.
+ * from them to send to the casting director. 
  */
 public class ContestantInformation {
 
@@ -342,6 +340,9 @@ public class ContestantInformation {
 		return Birthdate;
 	}
 
+	/**
+	 * returns the variables
+	 */
 	public String toString(){
 		return (firstname + " " + Lastname + " " + Streetnumber + " " + Streetname + " " + City + " " + province + " " + PostalCode + " " + Phonenumber + " " + Birthdate + " ");
 	}

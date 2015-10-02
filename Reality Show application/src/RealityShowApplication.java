@@ -6,6 +6,7 @@ import java.util.ArrayList;
  */
 
 /**
+ * This is the main part of the program
  * @author Rosauro Tuazon
  *
  */
@@ -20,11 +21,11 @@ public class RealityShowApplication {
 
 		// TODO Auto-generated method stub
 		boolean flag = false;
-		ContestantInformation contestant1 = new ContestantInformation();
 		/**
 		 * Gets the user's input
 		 */
 		do {
+			ContestantInformation contestant1 = new ContestantInformation();
 			flag = false;
 			System.out.println("Enter your first name.");
 			String Firstname = scan.nextLine();
@@ -97,6 +98,10 @@ public class RealityShowApplication {
 			
 
 		}
+		
+		/**
+		 * It will keep looping if the flag is true
+		 */
 		while (flag == true);
 
 		

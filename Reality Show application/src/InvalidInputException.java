@@ -1,8 +1,4 @@
 /**
- * 
- */
-
-/**
  * InvalidInputException extends Exception for invalid entries such
  * as adding more than 6 characters in the postal code, adding less than 6
  * characters, or using placing digits and characters at incorrect areas.
