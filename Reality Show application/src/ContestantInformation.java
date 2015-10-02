@@ -1,5 +1,5 @@
 /**
- * Date: Thursday, September 24, 2015
+ * Date: Friday, October 2, 2015
  * @author Rosauro Tuazon
  * Description: For this program the user will be applying for a reality show.
  * They will need to answer a skill testing question correctly, and be at least 
@@ -105,8 +105,25 @@ public class ContestantInformation {
 	 * 
 	 * @param streetnumber
 	 */
-	public void setStreetnumber(String streetnumber){
+	public void setStreetnumber(String streetnumber) throws InvalidInputException {
+		if (!Character.isDigit(streetnumber.charAt(0)))
+		{
+			throw new InvalidInputException("'" + streetnumber.charAt(0) + "' This needs to be a digit, not a character. (Error at Street Number)");
+		}
+		else if (!Character.isDigit(streetnumber.charAt(1)))
+		{
+			throw new InvalidInputException("'" + streetnumber.charAt(1) + "' This needs to be a digit, not a character. (Error at Street Number)");
+		}
+		else if (!Character.isDigit(streetnumber.charAt(2)))
+		{
+			throw new InvalidInputException("'" + streetnumber.charAt(2) + "' This needs to be a digit, not a character. (Error at Street Number)");
+		}
+		else
+		{
+			
+		}
 		this.Streetnumber = streetnumber;
+			
 	}
 	
 	/**
@@ -165,27 +182,27 @@ public class ContestantInformation {
 		}
 		else if (!Character.isLetter(postalcode.charAt(0)))
 		{
-			throw new InvalidInputException("'" + postalcode.charAt(0) + "' This needs to be a character, not digit.");
+			throw new InvalidInputException("'" + postalcode.charAt(0) + "' This needs to be a character, not digit. (Error at Postal Code)");
 		}
 		else if (!Character.isLetter(postalcode.charAt(2)))
 		{
-			throw new InvalidInputException("This needs to be a character, not digit.");
+			throw new InvalidInputException("'" + postalcode.charAt(2) + "' This needs to be a character, not digit. (Error at Postal Code)");
 		}
 		else if (!Character.isLetter(postalcode.charAt(4)))
 		{
-			throw new InvalidInputException("This needs to be a character, not digit.");
+			throw new InvalidInputException("'" + postalcode.charAt(4) + "' This needs to be a character, not digit. (Error at Postal Code)");
 		}
 		else if (!Character.isDigit(postalcode.charAt(1)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + postalcode.charAt(1) + "' This needs to be a digit, not a character. (Error at Postal Code)");
 		}
 		else if (!Character.isDigit(postalcode.charAt(3)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + postalcode.charAt(3) + "' This needs to be a digit, not a character. (Error at Postal Code)");
 		}
 		else if (!Character.isDigit(postalcode.charAt(5)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + postalcode.charAt(5) + "' This needs to be a digit, not a character. (Error at Postal Code)");
 		}
 		else
 		{
@@ -218,51 +235,51 @@ public class ContestantInformation {
 		}
 		else if (phonenumber.charAt(3)!='-')
 		{
-			throw new InvalidInputException("This needs to be a '-'");
+			throw new InvalidInputException("'" + phonenumber.charAt(3) + "' This needs to be a '-'. (Error at Phone number)");
 		}
 		else if (phonenumber.charAt(7)!='-')
 		{
-			throw new InvalidInputException("This needs to be a '-'");
+			throw new InvalidInputException("'" + phonenumber.charAt(7) + "' This needs to be a '-'. (Error at Phone number)");
 		}
 		else if (!Character.isDigit(phonenumber.charAt(0)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + phonenumber.charAt(0) + "' This needs to be a digit, not a character. (Error at Phone number)");
 		}
 		else if (!Character.isDigit(phonenumber.charAt(1)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + phonenumber.charAt(1) + "' This needs to be a digit, not a character. (Error at Phone number)");
 		}
 		else if (!Character.isDigit(phonenumber.charAt(2)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + phonenumber.charAt(2) + "' This needs to be a digit, not a character. (Error at Phone number)");
 		}
 		else if (!Character.isDigit(phonenumber.charAt(4)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + phonenumber.charAt(4) + "' This needs to be a digit, not a character. (Error at Phone number)");
 		}
 		else if (!Character.isDigit(phonenumber.charAt(5)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + phonenumber.charAt(5) + "' This needs to be a digit, not a character. (Error at Phone number)");
 		}
 		else if (!Character.isDigit(phonenumber.charAt(6)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + phonenumber.charAt(6) + "' This needs to be a digit, not a character. (Error at Phone number)");
 		}
 		else if (!Character.isDigit(phonenumber.charAt(8)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + phonenumber.charAt(8) + "' This needs to be a digit, not a character. (Error at Phone number)");
 		}
 		else if (!Character.isDigit(phonenumber.charAt(9)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + phonenumber.charAt(9) + "' This needs to be a digit, not a character. (Error at Phone number)");
 		}
 		else if (!Character.isDigit(phonenumber.charAt(10)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + phonenumber.charAt(10) + "' This needs to be a digit, not a character. (Error at Phone number)");
 		}
 		else if (!Character.isDigit(phonenumber.charAt(11)))
 		{
-			throw new InvalidInputException("This needs to be a digit, not a character.");
+			throw new InvalidInputException("'" + phonenumber.charAt(11) + "' This needs to be a digit, not a character. (Error at Phone number)");
 		}
 		else
 		{
@@ -298,17 +315,17 @@ public class ContestantInformation {
 		{
 			throw new InvalidInputException("This is an invalid month.");
 		}
-		else if (year > 2015)
+		else if (year > 2016)
 		{
 			throw new InvalidInputException("This is an invalid year.");
 	    }
 		else if (birthdate.charAt(2)!='/')
 		{
-			throw new InvalidInputException("This needs to be a '/'");
+			throw new InvalidInputException("'" + birthdate.charAt(2) + "' This needs to be a '/'. (Error at Birthday)");
 		}
 		else if (birthdate.charAt(5)!='/')
 		{
-			throw new InvalidInputException("This needs to be a '/'");
+			throw new InvalidInputException("'" + birthdate.charAt(5) + "' This needs to be a '/'. (Error at Birthday)");
 		}
 		else
 		{

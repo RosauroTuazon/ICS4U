@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * 
@@ -14,12 +15,15 @@ public class RealityShowApplication {
 	 */
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-
+        ArrayList <ContestantInformation> c1 = new ArrayList <ContestantInformation>();
 
 
 		// TODO Auto-generated method stub
 		boolean flag = false;
 		ContestantInformation contestant1 = new ContestantInformation();
+		/**
+		 * Gets the user's input
+		 */
 		do {
 			flag = false;
 			System.out.println("Enter your first name.");
@@ -32,7 +36,7 @@ public class RealityShowApplication {
 			String Streetnumber = scan.nextLine();
 			System.out.println("Enter your city's name.");
 			String City = scan.nextLine();
-			System.out.println("Enter your province");
+			System.out.println("Enter your province (ex. Ontario or ON)");
 			String smith = scan.nextLine();
 			System.out.println("Enter your postal code with no spaces. (ex. L1A4M3)");
 			String PostalCode = scan.nextLine();
@@ -50,35 +54,39 @@ public class RealityShowApplication {
 
 				if (smith.equalsIgnoreCase("Ontario"))
 					contestant1.setProvince(Province.ON);
-				if (smith.equalsIgnoreCase("Quebec"))
+				else if (smith.equalsIgnoreCase("Quebec"))
 					contestant1.setProvince(Province.QC);
-				if (smith.equalsIgnoreCase("Manitoba"))
+				else if (smith.equalsIgnoreCase("Manitoba"))
 					contestant1.setProvince(Province.MB);
-				if (smith.equalsIgnoreCase("Alberta"))
+				else if (smith.equalsIgnoreCase("Alberta"))
 					contestant1.setProvince(Province.AB);
-				if (smith.equalsIgnoreCase("British Columbia"))
+				else if (smith.equalsIgnoreCase("British Columbia"))
 					contestant1.setProvince(Province.BC);
-				if (smith.equalsIgnoreCase("New Brunswick"))
+				else if (smith.equalsIgnoreCase("New Brunswick"))
 					contestant1.setProvince(Province.NB);
-				if (smith.equalsIgnoreCase("Newfoundland"))
+				else if (smith.equalsIgnoreCase("Newfoundland"))
 					contestant1.setProvince(Province.NL);
-				if (smith.equalsIgnoreCase("Newfoundland and Labrador"))
+				else if (smith.equalsIgnoreCase("Newfoundland and Labrador"))
 					contestant1.setProvince(Province.NL);
-				if (smith.equalsIgnoreCase("Nova Scotia"))
+				else if (smith.equalsIgnoreCase("Nova Scotia"))
 					contestant1.setProvince(Province.NS);
-				if (smith.equalsIgnoreCase("Nunavut"))
+				else if (smith.equalsIgnoreCase("Nunavut"))
 					contestant1.setProvince(Province.NU);
-				if (smith.equalsIgnoreCase("Prince Edward Island"))
+				else if (smith.equalsIgnoreCase("Prince Edward Island"))
 					contestant1.setProvince(Province.PE);
-				if (smith.equalsIgnoreCase("Sasketchewan"))
+				else if (smith.equalsIgnoreCase("Sasketchewan"))
 					contestant1.setProvince(Province.SK);
-				if (smith.equalsIgnoreCase("Yukon"))
+				else if (smith.equalsIgnoreCase("Yukon"))
 					contestant1.setProvince(Province.YT);
+				else
+				{
+					throw new InvalidInputException("'" + smith + "' is not a correct province.");
+				}
 
 				contestant1.setPostalCode(PostalCode);
 				contestant1.setPhonenumber(Phonenumber);
 				contestant1.setBirthdate(Birthdate);
-				
+				c1.add(contestant1);
 				Label label1 = new Label (contestant1);
 				System.out.print(label1.toString());
 			}
