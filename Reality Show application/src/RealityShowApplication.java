@@ -11,21 +11,39 @@ import java.util.ArrayList;
  *
  */
 public class RealityShowApplication {
+	static Scanner scan = new Scanner(System.in);
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-        ArrayList <ContestantInformation> c1 = new ArrayList <ContestantInformation>();
+
+		ArrayList <ContestantInformation> contestants = new ArrayList <ContestantInformation>();
 
 
 		// TODO Auto-generated method stub
-		boolean flag = false;
+		int input;
 		/**
 		 * Gets the user's input
 		 */
 		do {
-			ContestantInformation contestant1 = new ContestantInformation();
+			System.out.println("Please choose one of the following:");
+			System.out.println("1. Add new contestant");
+			System.out.println("2. Print labels");
+			System.out.println("3. Search");
+			System.out.println("4. Exit program");
+			input = scan.nextInt();
+
+			if(input == 1)
+				addContestant(contestants);
+
+		} while(input != 4);
+	}
+
+	public static void addContestant (ArrayList<ContestantInformation> contestants) {
+
+		ContestantInformation contestant1 = new ContestantInformation();
+		boolean flag;
+		do {
 			flag = false;
 			System.out.println("Enter your first name.");
 			String Firstname = scan.nextLine();
@@ -45,6 +63,8 @@ public class RealityShowApplication {
 			String Phonenumber = scan.nextLine();
 			System.out.println("Enter your birthdate. (ex. 02/12/1995)");
 			String Birthdate = scan.nextLine();
+
+
 			try
 			{
 				contestant1.setfirstname(Firstname);
@@ -87,24 +107,27 @@ public class RealityShowApplication {
 				contestant1.setPostalCode(PostalCode);
 				contestant1.setPhonenumber(Phonenumber);
 				contestant1.setBirthdate(Birthdate);
-				c1.add(contestant1);
+				contestants.add(contestant1);
 				Label label1 = new Label (contestant1);
 				System.out.print(label1.toString());
 			}
+			/**
+			 * Catches invalid inputs
+			 */
 			catch (InvalidInputException e){
 				System.out.println(e.getMessage() + " Start from the beginning and try again.");
 				flag = true;
 			}
-			
+
 
 		}
-		
+
 		/**
 		 * It will keep looping if the flag is true
 		 */
 		while (flag == true);
 
-		
+
 
 	}
 }

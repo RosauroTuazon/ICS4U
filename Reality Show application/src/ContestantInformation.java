@@ -165,7 +165,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * Gets the user's postal code
 	 * @param postalcode
 	 * @throws InvalidInputException
 	 */
@@ -218,7 +218,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * Gets the user's Phone number
 	 * @param phonenumber
 	 * @throws InvalidInputException
 	 */
@@ -333,7 +333,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * Returns Birthdate
 	 * @return Birthdate
 	 */
 	public String getBirthdate(){
@@ -343,6 +343,51 @@ public class ContestantInformation {
 	/**
 	 * returns the variables
 	 */
+	
+	/**
+	 * 
+	 * @param target
+	 * @return
+	 */
+	public boolean equals(ContestantInformation target) {
+		target.getFirstname() .equals (this.firstname);
+		if (target.getFirstname() == firstname && target.getLastname() == Lastname) {
+			return true;
+		}
+		else 
+		{
+		return false;
+		}
+	}
+	
+	
+	public int compareTo(ContestantInformation object) {
+		String fname = this.firstname;
+		String fname2 = object.getFirstname();
+		String lname = this.Lastname;
+		String lname2 = object.getLastname();
+		if (lname2.compareTo(lname) == 0) {
+			if (fname2.compareTo(fname) == 0) {
+				return 0;
+			}
+			else if (fname2.compareTo(fname) > 0) {
+				return 1;
+			}
+			else
+			{
+			return -1;
+			}
+		}
+		else if (lname2.compareTo(lname) > 0) {
+			return 1;
+		}
+		else
+		{
+		return -1;
+		
+		}
+	}
+	
 	public String toString(){
 		return (firstname + " " + Lastname + " " + Streetnumber + " " + Streetname + " " + City + " " + province + " " + PostalCode + " " + Phonenumber + " " + Birthdate + " ");
 	}
