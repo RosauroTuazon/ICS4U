@@ -1,15 +1,16 @@
 /**
- * Date: Friday, October 2, 2015
- * @author Rosauro Tuazon
- * Description: For this program the user will be applying for a reality show.
+ * For this program the user will be applying for a reality show.
  * They will need to answer a skill testing question correctly, and be at least 
  * 18 years of age. If they qualify you will get their address and phone number 
  * from them to send to the casting director. 
+ * Date: Friday, October 2, 2015
+ * @author Rosauro Tuazon
  */
-public class ContestantInformation {
+@SuppressWarnings("rawtypes")
+public class ContestantInformation implements Comparable{
 
 	private String firstname;
-	private String Lastname;
+	private String lastname;
 	private String Streetname;
 	private String Streetnumber;
 	private String City;
@@ -22,11 +23,19 @@ public class ContestantInformation {
 	 * default constructor
 	 */
 	public ContestantInformation(){
-		
+		firstname = "";
+		lastname = "";
+		Streetname = "";
+		Streetnumber = "";
+		City = "";
+		province = Province.ON;
+		PostalCode = "";
+		Phonenumber = "";
+		Birthdate = "";
 	}
 	
 	/**
-	 * 
+	 * Receives input from the user.
 	 * @param Firstname
 	 * @param Lastname
 	 * @param Streetname
@@ -52,7 +61,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * Sets the first name of the user.
 	 * @param firstname
 	 */
 	public void setfirstname(String firstname){
@@ -60,7 +69,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * Gets the first name from the stored list of contestants.
 	 * @return firstname
 	 */
 	public String getFirstname(){
@@ -68,23 +77,23 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * Sets the last name of the user.
 	 * @param lastname
 	 */
 	public void setLastname(String lastname){
-		this.Lastname = lastname;
+		this.lastname = lastname;
 	}
 	
 	/**
-	 * 
+	 * Gets the last name from the stored list of contestants.
 	 * @return Lastname
 	 */
 	public String getLastname(){
-		return Lastname;
+		return lastname;
 	}
 	
 	/**
-	 * 
+	 * Sets the street name of the user.
 	 * @param streetname
 	 */
 	public void setStreetname(String streetname){
@@ -92,7 +101,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * Gets the street name from the stored list of contestants.
 	 * @return Streetname
 	 */
 	public String getStreetname(){
@@ -100,7 +109,9 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * Sets the Streetnumber of the contestant. If the user inserts an incorrect
+	 * number like a letter or character, it will throw an InvalidInputException
+	 * and then the user will have to start again.
 	 * @param streetnumber
 	 */
 	public void setStreetnumber(String streetnumber) throws InvalidInputException {
@@ -125,7 +136,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * This gets the Streetnumber from the stored list of contestants.
 	 * @return Streetnumber
 	 */
 	public String getStreetnumber(){
@@ -133,7 +144,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * This sets the city of the contestant.
 	 * @param city
 	 */
 	public void setCity(String city){
@@ -141,7 +152,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * This gets the city from the stored list of contestants.
 	 * @return City
 	 */
 	public String getCity(){
@@ -149,7 +160,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * Sets the province from the user.
 	 * @param province
 	 */
 	public void setProvince(Province province) {
@@ -157,7 +168,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * Gets the province from the stored list of contestants.
 	 * @return Province
 	 */
 	public Province getProvince(){
@@ -165,7 +176,9 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * Gets the user's postal code
+	 * Sets the user's postal code and it will throw an InvalidInputException
+	 * if the user inserts an incorrect postal code like 7A1P3D or a postal code
+	 * with a space.
 	 * @param postalcode
 	 * @throws InvalidInputException
 	 */
@@ -210,7 +223,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * Gets the postal code from the stored list of contestants.
 	 * @return PostalCode
 	 */
 	public String getPostalCode(){
@@ -218,7 +231,9 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * Gets the user's Phone number
+	 * Sets the user's Phone number and it will throw an InvalidInputException if
+	 * the user doesn't go by the specific phone number format or they use something
+	 * that doesn't exist in a phone number like a character.
 	 * @param phonenumber
 	 * @throws InvalidInputException
 	 */
@@ -287,14 +302,15 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * 
+	 * Gets the phone number from the stored list of contestants.
 	 * @return Phonenumber
 	 */
 	public String getPhonenumber(){
 		return Phonenumber;
 	}
 	/**
-	 * This sets the birthdate, please input in this format dd/mm/yyyy
+	 * This sets the birthdate, please input in this format dd/mm/yyyy or else
+	 * it will give an error.
 	 * @param birthdate
 	 * @throws InvalidInputException
 	 */
@@ -333,7 +349,7 @@ public class ContestantInformation {
 	}
 	
 	/**
-	 * Returns Birthdate
+	 * Gets the Birthdate from the stored list of contestants.
 	 * @return Birthdate
 	 */
 	public String getBirthdate(){
@@ -345,13 +361,14 @@ public class ContestantInformation {
 	 */
 	
 	/**
-	 * 
+	 * Checks if the first and last name of the inputted name and the stored names are
+	 * the same, returns true if they're the same or false if they are not.
 	 * @param target
 	 * @return
 	 */
 	public boolean equals(ContestantInformation target) {
-		target.getFirstname() .equals (this.firstname);
-		if (target.getFirstname() == firstname && target.getLastname() == Lastname) {
+		target.getFirstname() .equalsIgnoreCase (this.firstname);
+		if (target.getFirstname() == firstname && target.getLastname() == lastname) {
 			return true;
 		}
 		else 
@@ -361,10 +378,11 @@ public class ContestantInformation {
 	}
 	
 	
-	public int compareTo(ContestantInformation object) {
+	public int compareTo(Object args) {
+		ContestantInformation object = (ContestantInformation)args;
 		String fname = this.firstname;
 		String fname2 = object.getFirstname();
-		String lname = this.Lastname;
+		String lname = this.lastname;
 		String lname2 = object.getLastname();
 		if (lname2.compareTo(lname) == 0) {
 			if (fname2.compareTo(fname) == 0) {
@@ -388,7 +406,10 @@ public class ContestantInformation {
 		}
 	}
 	
+	/**
+	 * Displays all of the information from the contestant.
+	 */
 	public String toString(){
-		return (firstname + " " + Lastname + " " + Streetnumber + " " + Streetname + " " + City + " " + province + " " + PostalCode + " " + Phonenumber + " " + Birthdate + " ");
+		return (firstname + " " + lastname + " " + Streetnumber + " " + Streetname + " " + City + " " + province + " " + PostalCode + " " + Phonenumber + " " + Birthdate + " ");
 	}
 }

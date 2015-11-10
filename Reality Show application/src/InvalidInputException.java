@@ -5,6 +5,7 @@
  * @author Rosauro Tuazon
  *
  */
+@SuppressWarnings("serial")
 public class InvalidInputException extends Exception {
 
 	/**
