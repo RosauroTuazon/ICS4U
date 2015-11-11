@@ -16,11 +16,11 @@ public class Search {
 	 */
 	public static int binary(int[] array, int numToFind) {
 		int begIndex = 0;
-		int endIndex = array.length -1;
+		int endIndex = array.length - 1;
 		int midIndex;
 
 		do {
-		
+			
 			midIndex = (begIndex + endIndex) / 2;
 
 			if (array[midIndex] == numToFind) {
@@ -30,22 +30,21 @@ public class Search {
 				endIndex = midIndex - 1;
 			}
 
-			else { // (array[midIndex] < numToFind) 
+			else { // (array[midIndex] < numToFind) {
 				begIndex = midIndex + 1;
 
 			}
 		}
-		while ((begIndex <= endIndex) &&
-				(begIndex == endIndex)); {
+		while ((begIndex <= endIndex)); {
 
 		return -1;
 	}
 
 }
 	
-	public static int binary(double[] array, double numToFind) {
+	public static double binary(double[] array, double numToFind) {
 		int begIndex = 0;
-		int endIndex = array.length -1;
+		int endIndex = array.length - 1;
 		int midIndex;
 
 		do {
@@ -64,8 +63,7 @@ public class Search {
 
 			}
 		}
-		while ((begIndex <= endIndex) &&
-				(begIndex == endIndex)); {
+		while ((begIndex <= endIndex)); {
 
 		return -1;
 	}
@@ -93,8 +91,7 @@ public class Search {
 
 			}
 		}
-		while ((begIndex <= endIndex) &&
-				(begIndex == endIndex)); {
+		while ((begIndex <= endIndex)); {
 
 		return -1;
 	}
