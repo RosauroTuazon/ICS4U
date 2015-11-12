@@ -377,7 +377,10 @@ public class ContestantInformation implements Comparable{
 		}
 	}
 	
-	
+	/**
+	 * This method compares the first and last name of the user inputted info with
+	 * the first and last name of the stored contestants.
+	 */
 	public int compareTo(Object args) {
 		ContestantInformation object = (ContestantInformation)args;
 		String fname = this.firstname;

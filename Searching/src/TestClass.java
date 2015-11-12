@@ -1,22 +1,11 @@
 import java.text.DecimalFormat;
 
 /**
- * 
- */
-
-/**
  * @author Rosauro Tuazon
  *
  */
 public class TestClass {
-
-	/**
-	 * 
-	 */
-	public TestClass() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	/**
 	 * @param args
 	 */

@@ -1,4 +1,5 @@
 /**
+ * This program lets the user search for numbers or names in an ArrayList.
  * @author Rosauro Tuazon
  *
  */
@@ -41,7 +42,12 @@ public class Search {
 	}
 
 }
-	
+	/**
+	 * Acts similar to the first binary method, but this uses double instead of int.
+	 * @param array
+	 * @param numToFind
+	 * @return
+	 */
 	public static double binary(double[] array, double numToFind) {
 		int begIndex = 0;
 		int endIndex = array.length - 1;
@@ -69,7 +75,12 @@ public class Search {
 	}
 
 }
-	
+	/**
+	 * Acts similar to the first binary method, but it uses String instead of int.
+	 * @param array
+	 * @param numToFind
+	 * @return
+	 */
 	public static int binary(String[] array, String numToFind) {
 		int begIndex = 0;
 		int endIndex = array.length -1;
@@ -98,6 +109,12 @@ public class Search {
 
 }
 	
+	/**
+	 * 
+	 * @param a
+	 * @param target
+	 * @return
+	 */
 	public static int linearSearch (int[] a, int target) {
 		for (int i=0; i < a.length; i++) {
 			if (a[i] == target)

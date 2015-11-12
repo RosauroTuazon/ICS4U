@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 /**
+ * This program searches for elements in an Array List.
  * @author Rosauro Tuazon
  *
  */
@@ -14,7 +15,7 @@ public class Search {
 	 * returned if element not found.
 	 * @param array
 	 * @param numToFind
-	 * @return
+	 * @return int
 	 */
 	public static int binary(int[] array, int numToFind) {
 		int begIndex = 0;

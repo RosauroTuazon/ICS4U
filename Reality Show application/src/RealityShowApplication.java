@@ -1,6 +1,8 @@
 import java.util.Scanner;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -20,9 +22,10 @@ public class RealityShowApplication {
 	/**
 	 * @param args
 	 * @throws IOException 
+	 * @throws InvalidInputException 
 	 */
 	@SuppressWarnings("unchecked")
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, InvalidInputException {
 		ArrayList <ContestantInformation> contestants = new ArrayList <ContestantInformation>();
 		
 		int input;
@@ -53,22 +56,34 @@ public class RealityShowApplication {
 				removeallLabel(contestants);
 			else if(input == 6)
 				save(contestants);
+			else if(input == 7)
+				load(contestants);
 			else if(input == 8)
 				Collections.sort(contestants);
 		} while(input != 9);
 	}
 	
+	/**
+	 * This will print the labels of any stored contestants, however it will just leave
+	 * a message if there isn't anything stored yet.
+	 * @param contestants
+	 */
 	public static void addLabel (ArrayList<ContestantInformation> contestants) {
 		if (contestants.size() == 0)
 			System.out.println("There are no contestants yet.");
 		else {
 			for (int i=0; i < contestants.size(); i++) {
 				Label label1 = new Label(contestants.get(i));
-				System.out.print(label1.toString());
+				System.out.println(label1.toString());
 			}
 		}
 	}
 	
+	/**
+	 * This method has the user search for a contestant by inputting their first
+	 * and last name.
+	 * @param contestants
+	 */
 	public static void searchInfo (ArrayList<ContestantInformation> contestants) {
 		scan.nextLine();
 		System.out.println("Enter the first name of the contestant you want to search:");
@@ -83,6 +98,12 @@ public class RealityShowApplication {
 		Search.linearSearch(contestants, temporary);
 	}
 	
+	/**
+	 * This method asks the user the index of the contestant they want to delete, it will
+	 * then delete that contestant if it's available. Though it will go back to the
+	 * menu if there isn't any contestants available.
+	 * @param contestants
+	 */
 	public static void removeLabel (ArrayList<ContestantInformation> contestants) {
 		if (contestants.size() == 0)
 			System.out.println("There are no contestants yet.");
@@ -97,6 +118,11 @@ public class RealityShowApplication {
 		}
 	}
 	
+	/**
+	 * This method allows the user to delete all Contestants if they wish to, otherwise
+	 * it will go back to the menu if they choose no.
+	 * @param contestants
+	 */
 	public static void removeallLabel (ArrayList<ContestantInformation> contestants) {
 		System.out.println("Are you sure you want to delete everything?");
 		String Confirmation = scan.nextLine();
@@ -110,6 +136,11 @@ public class RealityShowApplication {
 			}
 	}
 
+	/**
+	 * This method saves the current stored array list of contestants to a .txt file.
+	 * @param contestants
+	 * @throws IOException
+	 */
 	public static void save (ArrayList<ContestantInformation> contestants) throws IOException {
 		try {
 		File file = new File("contestants.txt");
@@ -131,8 +162,8 @@ public class RealityShowApplication {
 			fps.println(contestants.get(i).getPostalCode());
 			fps.println(contestants.get(i).getPhonenumber());
 			fps.println(contestants.get(i).getBirthdate());
+			
 		}
-		
 		
 		fileOutputStream.close();
 		} catch (IOException ex) {
@@ -141,14 +172,131 @@ public class RealityShowApplication {
 		}
 		
 	}
-	
 
+	public static Province setProvince (String province) {
+		if (province.equalsIgnoreCase("Ontario"))
+			return(Province.ON);
+		else if (province.equalsIgnoreCase("ON"))
+			return(Province.ON);
+		else if (province.equalsIgnoreCase("Quebec"))
+			return(Province.QC);
+		else if (province.equalsIgnoreCase("QC"))
+			return(Province.QC);
+		else if (province.equalsIgnoreCase("Manitoba"))
+			return(Province.MB);
+		else if (province.equalsIgnoreCase("MB"))
+			return(Province.MB);
+		else if (province.equalsIgnoreCase("Alberta"))
+			return(Province.AB);
+		else if (province.equalsIgnoreCase("AB"))
+			return (Province.AB);
+		else if (province.equalsIgnoreCase("British Columbia"))
+			return (Province.BC);
+		else if (province.equalsIgnoreCase("BC"))
+			return (Province.BC);
+		else if (province.equalsIgnoreCase("New Brunswick"))
+			return (Province.NB);
+		else if (province.equalsIgnoreCase("NB"))
+			return (Province.NB);
+		else if (province.equalsIgnoreCase("Newfoundland"))
+			return (Province.NL);
+		else if (province.equalsIgnoreCase("NL"))
+			return (Province.NL);
+		else if (province.equalsIgnoreCase("Newfoundland and Labrador"))
+			return (Province.NL);
+		else if (province.equalsIgnoreCase("Nova Scotia"))
+			return (Province.NS);
+		else if (province.equalsIgnoreCase("NS"))
+			return (Province.NS);
+		else if (province.equalsIgnoreCase("Nunavut"))
+			return (Province.NU);
+		else if (province.equalsIgnoreCase("NU"))
+			return (Province.NU);
+		else if (province.equalsIgnoreCase("Prince Edward Island"))
+			return (Province.PE);
+		else if (province.equalsIgnoreCase("PE"))
+			return (Province.PE);
+		else if (province.equalsIgnoreCase("Sasketchewan"))
+			return (Province.SK);
+		else if (province.equalsIgnoreCase("SK"))
+			return (Province.SK);
+		else if (province.equalsIgnoreCase("Yukon"))
+			return (Province.YT);
+		else if (province.equalsIgnoreCase("YT"))
+			return (Province.YT);
+		else
+		{
+			return (Province.ON);
+		}
+	}
+	/**
+	 * This method loads a stored Array List from a .txt file.
+	 * @param contestants
+	 * @throws IOException
+	 * @throws InvalidInputException 
+	 */
+	@SuppressWarnings("resource")
+	public static void load (ArrayList<ContestantInformation> contestants) throws IOException, InvalidInputException {
+		String filename = ("contestants.txt");
+		FileReader file = new FileReader(filename);
+		int i;
+		BufferedReader fbr = new BufferedReader(file);
+	
+		System.out.println("Loading from File... "); 
+	
+		try {
+			if (!fbr.ready()) {
+				throw new IOException();
+			}
+			int numOfContestants = Integer.parseInt(fbr.readLine());
+			for (i=0; i < numOfContestants; i++) {
+				String Firstname = fbr.readLine();
+				String Lastname = fbr.readLine();
+				String Streetname = fbr.readLine();
+				String Streetnumber = fbr.readLine();
+				String City = fbr.readLine();
+				String province = fbr.readLine();
+				String PostalCode = fbr.readLine();
+				String Phonenumber = fbr.readLine();
+				String Birthdate = fbr.readLine();
+				
+				ContestantInformation contestant1 = new ContestantInformation ();
+				contestants.add(contestant1);
+				contestant1.setfirstname(Firstname);
+				contestant1.setLastname(Lastname);
+				contestant1.setStreetname(Streetname);
+				contestant1.setStreetnumber(Streetnumber);
+				contestant1.setCity(City);
+				contestant1.setProvince(setProvince(province));
+				contestant1.setPostalCode(PostalCode);
+				contestant1.setPhonenumber(Phonenumber);
+				contestant1.setBirthdate(Birthdate);
+
+				//new contestantInfo(firstName,  )
+				//add to arraylist
+			fbr.close(); }
+			System.out.println("File loaded.");
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+		
+		
+	}
+	
+	/**
+	 * This method will add a contestant's information if they pass the skill testing
+	 * question and their age is 18 or above.
+	 * @param contestants
+	 */
 	public static void addContestant (ArrayList<ContestantInformation> contestants) {
 
 		ContestantInformation contestant1 = new ContestantInformation();
 		boolean flag;
 		do {
 			flag = false;
+			System.out.println("What is 7 x 6?");
+			int SkillQuestion = scan.nextInt();
+			scan.nextLine();
 			System.out.println("Enter your first name.");
 			String Firstname = scan.nextLine();
 			System.out.println("Enter your last name.");
@@ -160,7 +308,7 @@ public class RealityShowApplication {
 			System.out.println("Enter your city's name.");
 			String City = scan.nextLine();
 			System.out.println("Enter your province (ex. Ontario or ON)");
-			String smith = scan.nextLine();
+			String province = scan.nextLine();
 			System.out.println("Enter your postal code with no spaces. (ex. L1A4M3)");
 			String PostalCode = scan.nextLine();
 			System.out.println("Enter your phone number. (ex. 416-321-1337)");
@@ -177,65 +325,69 @@ public class RealityShowApplication {
 				contestant1.setStreetnumber(Streetnumber);
 				contestant1.setCity(City);
 
-				if (smith.equalsIgnoreCase("Ontario"))
+				if (province.equalsIgnoreCase("Ontario"))
 					contestant1.setProvince(Province.ON);
-				else if (smith.equalsIgnoreCase("ON"))
+				else if (province.equalsIgnoreCase("ON"))
 					contestant1.setProvince(Province.ON);
-				else if (smith.equalsIgnoreCase("Quebec"))
+				else if (province.equalsIgnoreCase("Quebec"))
 					contestant1.setProvince(Province.QC);
-				else if (smith.equalsIgnoreCase("QC"))
+				else if (province.equalsIgnoreCase("QC"))
 					contestant1.setProvince(Province.QC);
-				else if (smith.equalsIgnoreCase("Manitoba"))
+				else if (province.equalsIgnoreCase("Manitoba"))
 					contestant1.setProvince(Province.MB);
-				else if (smith.equalsIgnoreCase("MB"))
+				else if (province.equalsIgnoreCase("MB"))
 					contestant1.setProvince(Province.MB);
-				else if (smith.equalsIgnoreCase("Alberta"))
+				else if (province.equalsIgnoreCase("Alberta"))
 					contestant1.setProvince(Province.AB);
-				else if (smith.equalsIgnoreCase("AB"))
+				else if (province.equalsIgnoreCase("AB"))
 					contestant1.setProvince(Province.AB);
-				else if (smith.equalsIgnoreCase("British Columbia"))
+				else if (province.equalsIgnoreCase("British Columbia"))
 					contestant1.setProvince(Province.BC);
-				else if (smith.equalsIgnoreCase("BC"))
+				else if (province.equalsIgnoreCase("BC"))
 					contestant1.setProvince(Province.BC);
-				else if (smith.equalsIgnoreCase("New Brunswick"))
+				else if (province.equalsIgnoreCase("New Brunswick"))
 					contestant1.setProvince(Province.NB);
-				else if (smith.equalsIgnoreCase("NB"))
+				else if (province.equalsIgnoreCase("NB"))
 					contestant1.setProvince(Province.NB);
-				else if (smith.equalsIgnoreCase("Newfoundland"))
+				else if (province.equalsIgnoreCase("Newfoundland"))
 					contestant1.setProvince(Province.NL);
-				else if (smith.equalsIgnoreCase("NL"))
+				else if (province.equalsIgnoreCase("NL"))
 					contestant1.setProvince(Province.NL);
-				else if (smith.equalsIgnoreCase("Newfoundland and Labrador"))
+				else if (province.equalsIgnoreCase("Newfoundland and Labrador"))
 					contestant1.setProvince(Province.NL);
-				else if (smith.equalsIgnoreCase("Nova Scotia"))
+				else if (province.equalsIgnoreCase("Nova Scotia"))
 					contestant1.setProvince(Province.NS);
-				else if (smith.equalsIgnoreCase("NS"))
+				else if (province.equalsIgnoreCase("NS"))
 					contestant1.setProvince(Province.NS);
-				else if (smith.equalsIgnoreCase("Nunavut"))
+				else if (province.equalsIgnoreCase("Nunavut"))
 					contestant1.setProvince(Province.NU);
-				else if (smith.equalsIgnoreCase("NU"))
+				else if (province.equalsIgnoreCase("NU"))
 					contestant1.setProvince(Province.NU);
-				else if (smith.equalsIgnoreCase("Prince Edward Island"))
+				else if (province.equalsIgnoreCase("Prince Edward Island"))
 					contestant1.setProvince(Province.PE);
-				else if (smith.equalsIgnoreCase("PE"))
+				else if (province.equalsIgnoreCase("PE"))
 					contestant1.setProvince(Province.PE);
-				else if (smith.equalsIgnoreCase("Sasketchewan"))
+				else if (province.equalsIgnoreCase("Sasketchewan"))
 					contestant1.setProvince(Province.SK);
-				else if (smith.equalsIgnoreCase("SK"))
+				else if (province.equalsIgnoreCase("SK"))
 					contestant1.setProvince(Province.SK);
-				else if (smith.equalsIgnoreCase("Yukon"))
+				else if (province.equalsIgnoreCase("Yukon"))
 					contestant1.setProvince(Province.YT);
-				else if (smith.equalsIgnoreCase("YT"))
+				else if (province.equalsIgnoreCase("YT"))
 					contestant1.setProvince(Province.YT);
 				else
 				{
-					throw new InvalidInputException("'" + smith + "' is not a correct province.");
+					throw new InvalidInputException("'" + province + "' is not a correct province.");
 				}
 
 				contestant1.setPostalCode(PostalCode);
 				contestant1.setPhonenumber(Phonenumber);
 				contestant1.setBirthdate(Birthdate);
-				contestants.add(contestant1);
+				
+				if (SkillQuestion != 42)
+					System.out.println("Sorry, you got the skill question wrong.");
+				else
+					contestants.add(contestant1);
 				Label label1 = new Label (contestant1);
 				System.out.print(label1.toString());
 			}
